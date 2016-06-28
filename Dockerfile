@@ -8,7 +8,10 @@ RUN apt-get install -y \
     git \
     vim \
     zsh \
-    curl
+    curl \
+    tree \
+    ack-grep \
+    tmux
 
 # Oh-My-ZSH
 RUN git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
