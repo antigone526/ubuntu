@@ -1,3 +1,5 @@
+.DS_Store
+
 ssh/*
 !ssh/.gitkeep
 data/*
