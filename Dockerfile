@@ -23,7 +23,7 @@ RUN mkdir ~/.ssh
 COPY ssh/ /root/.ssh
 RUN chmod 700 /root/.ssh
 
-VOLUME ["/data"]
+VOLUME ["/data", "/projects"]
 
 WORKDIR /data
 COPY data/ /data
