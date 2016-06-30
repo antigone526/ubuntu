@@ -14,12 +14,13 @@ RUN apt-get install -y \
     tmux
 
 # Oh-My-ZSH
-RUN git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+RUN git clone git://github.com/robbyrussell/oh-my-zsh.git /root/.oh-my-zsh
+RUN cp /root/.oh-my-zsh/templates/zshrc.zsh-template /root/.zshrc
 COPY zshrc /root/.zshrc
 RUN chsh -s /bin/zsh
 
 # SSH
-RUN mkdir ~/.ssh
+RUN mkdir /root/.ssh
 COPY ssh/ /root/.ssh
 RUN chmod 700 /root/.ssh
 
