@@ -4,5 +4,7 @@ ssh/*
 !ssh/.gitkeep
 data/*
 !data/.gitkeep
+home/*
+!home/.gitkeep
 zshrc
 vimrc
