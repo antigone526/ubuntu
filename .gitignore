@@ -4,3 +4,5 @@ ssh/*
 !ssh/.gitkeep
 data/*
 !data/.gitkeep
+zshrc
+vimrc

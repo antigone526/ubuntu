@@ -1,0 +1,9 @@
+call plug#begin('~/.vim/plugged')
+
+" Themes
+Plug 'sickill/vim-monokai'
+Plug 'flazz/vim-colorschemes'
+
+
+" Add plugins to &runtimepath
+call plug#end()
