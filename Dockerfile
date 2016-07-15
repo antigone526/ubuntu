@@ -1,6 +1,11 @@
 FROM ubuntu
 MAINTAINER Nathan Feldsien <nfeld9807@gmail.com>
 
+# ENV
+ENV GIT_NAME="" \
+    GIT_EMAIL="false" \
+    GIT_PUSH_PREFERENCE="matching"
+
 # Install packages
 RUN apt-get update -y && apt-get upgrade -y
 
@@ -39,6 +44,14 @@ COPY vimrc-template /root/.vimrc
 RUN mkdir /root/.ssh
 COPY ssh/ /root/.ssh
 RUN chmod 700 /root/.ssh
+
+# Change Permissions for default keys
+RUN chmod 600 /root/id_rsa*
+
+# Git
+RUN git config --global push.default $GIT_PUSH_PREFERENCE
+RUN git config --global user.name $GIT_NAME
+RUN git config --global user.email $GIT_EMAIL
 
 # Home
 ADD home /root/
