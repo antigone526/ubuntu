@@ -43,10 +43,10 @@ COPY vimrc-template /root/.vimrc
 # SSH
 RUN mkdir /root/.ssh
 COPY ssh/ /root/.ssh
-RUN chmod 700 /root/.ssh
 
 # Change Permissions for default keys
-RUN chmod 600 /root/id_rsa*
+RUN chmod -R 600 /root/.ssh
+RUN chmod 700 /root/.ssh
 
 # Git
 RUN git config --global push.default $GIT_PUSH_PREFERENCE
