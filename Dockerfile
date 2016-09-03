@@ -49,9 +49,9 @@ RUN chmod -R 600 /root/.ssh
 RUN chmod 700 /root/.ssh
 
 # Git
-RUN git config --global push.default $GIT_PUSH_PREFERENCE
-RUN git config --global user.name $GIT_NAME
-RUN git config --global user.email $GIT_EMAIL
+# RUN git config --global push.default $GIT_PUSH_PREFERENCE
+# RUN git config --global user.name $GIT_NAME
+# RUN git config --global user.email $GIT_EMAIL
 
 # Home
 ADD home /root/
