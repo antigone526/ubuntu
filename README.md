@@ -1,6 +1,6 @@
 # Ubuntu
 
-***
+Personal Ubuntu setup for development and easy setup
 
 [![](https://images.microbadger.com/badges/image/nfeld9807/ubuntu.svg)](https://microbadger.com/images/nfeld9807/ubuntu
 "Get your own image badge on microbadger.com")
