@@ -10,6 +10,9 @@
 * SSH
     * `ssh`
     * Copies files to `/root/.ssh`
+* Home
+    * `home`
+    * Copies files to `/root/`
 
 ### Running
 
