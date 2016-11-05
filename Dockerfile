@@ -35,8 +35,8 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | bash
 RUN apt-get install -y nodejs
 
 # Create Empty SSH Profile to pass build
-RUN mkdir .ssh
-RUN touch .ssh/id_rsa
+RUN mkdir /root/.ssh
+RUN touch /root/.ssh/id_rsa
 
 # Home
 ADD home /root/
