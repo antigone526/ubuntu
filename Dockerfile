@@ -1,17 +1,20 @@
 FROM ubuntu
-MAINTAINER Nathan Feldsien <nfeld9807@gmail.com>
-
-# ENV
-ENV GIT_NAME="" \
-    GIT_EMAIL="false" \
-    GIT_PUSH_PREFERENCE="matching"
+MAINTAINER Nathan Feldsien <n.feldsien@me.com>
 
 # Install packages
 RUN apt-get update -y && apt-get upgrade -y
 
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install software-properties-common
+
+# NeoVim Repository
+RUN  add-apt-repository ppa:neovim-ppa/unstable
+
+RUN apt-get update -y
+
 RUN apt-get install -y \
     build-essential \
     git \
+    neovim \
     vim \
     zsh \
     curl \
@@ -20,6 +23,8 @@ RUN apt-get install -y \
     tmux \
     python-dev \
     python3-dev \
+    python-pip \
+    python3-pip \
     cmake \
     automake \
     gcc \
@@ -29,32 +34,20 @@ RUN apt-get install -y \
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash
 RUN apt-get install -y nodejs
 
+# Home
+ADD home /root/
+
 # Oh-My-ZSH
 RUN git clone git://github.com/robbyrussell/oh-my-zsh.git /root/.oh-my-zsh
 RUN cp /root/.oh-my-zsh/templates/zshrc.zsh-template /root/.zshrc
 RUN chsh -s /bin/zsh
 
-# Vim
-RUN curl -fLo /root/.vim/autoload/plug.vim --create-dirs \
+# NeoVim
+RUN curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-# Add vimrc template with vim plug plugin manager installed
-COPY vimrc-template /root/.vimrc
-
-# SSH
-RUN mkdir /root/.ssh
-COPY ssh/ /root/.ssh
 
 # Change Permissions for default keys
-RUN chmod -R 600 /root/.ssh
-RUN chmod 700 /root/.ssh
-
-# Git
-# RUN git config --global push.default $GIT_PUSH_PREFERENCE
-# RUN git config --global user.name $GIT_NAME
-# RUN git config --global user.email $GIT_EMAIL
-
-# Home
-ADD home /root/
+RUN chmod 600 /root/.ssh/id_rsa*
 
 VOLUME ["/data", "/projects"]
 
