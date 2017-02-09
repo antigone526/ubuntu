@@ -1,5 +1,5 @@
 FROM ubuntu
-MAINTAINER Nathan Feldsien <n.feldsien@me.com>
+MAINTAINER Nathan Feldsien <nfeld9807@gmail.com>
 
 # Install packages
 RUN apt-get update -y && apt-get upgrade -y
