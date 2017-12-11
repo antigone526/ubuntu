@@ -6,32 +6,24 @@ RUN apt-get update -y && apt-get upgrade -y
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install software-properties-common
 
-# NeoVim Repository
-RUN  add-apt-repository ppa:neovim-ppa/unstable
+# NeoVim
+RUN add-apt-repository ppa:neovim-ppa/stable
 
 RUN apt-get update -y
 
-RUN apt-get install -y \
+RUN apt-get install -y --fix-missing \
+    software-properties-common \
     build-essential \
     git \
     neovim \
-    vim \
     zsh \
     curl \
     tree \
     ack-grep \
-    tmux \
-    python-dev \
-    python3-dev \
-    python-pip \
-    python3-pip \
-    cmake \
-    automake \
-    gcc \
     npm
 
 # Node
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash
+RUN curl -sL https://deb.nodesource.com/setup_9.x | bash -
 RUN apt-get install -y nodejs
 
 # Create Empty SSH Profile to pass build
